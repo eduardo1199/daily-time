@@ -1,0 +1,13 @@
+Aqui estão as principais cores hexadecimais extraídas da imagem:
+
+#166e50 (verde escuro)
+
+#e9f6ed (verde claro quase branco)
+
+#2b9f66 (verde médio vibrante)
+
+#183935 (verde-petróleo escuro)
+
+#99c5b5 (verde claro acinzentado)
+
+#d2e8dc (verde muito claro)
