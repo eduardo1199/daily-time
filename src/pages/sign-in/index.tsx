@@ -1,5 +1,5 @@
-import { Box, TextField } from "@mui/material";
-import { ButtonComponent, ErrorLabel, Label, SystemName, Title } from "./styles";
+import { Box } from "@mui/material";
+import { ButtonComponent, ErrorLabel, Field, Form, Label, SystemName, Title } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -26,26 +26,26 @@ export function SignIn() {
 
   const navigate = useNavigate()
 
-  console.log(errors)
-
   function handleSubmitRegister(data: SignInForm) {
     console.log(data)
   }
 
   return (
-    <Box display="flex" width={'100%'} height="100%">
-      <Box display="flex" alignItems={'center'} justifyContent={'center'} width='400px' bgcolor="#166e50" flexDirection={'column'} height="100%" textAlign="start">
+    <Box display="flex" width={'100%'} height="100vh">
+      <Box display="flex" alignItems={'center'} justifyContent={'center'} width='40%' bgcolor="#166e50" flexDirection={'column'} textAlign="start">
         <Title>Faça seu cadastro no <SystemName>DailyTime.</SystemName></Title>
       </Box>
-      <Box display="flex" flex="1" justifyContent="center" alignItems="center" padding={16}>
-        <form style={{ width: '100%' }} onSubmit={handleSubmit(handleSubmitRegister)}>
-          <Box display="flex" width={'100%'} flexDirection={'column'} bgcolor="white" boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px;" padding={6} gap={1} borderRadius={1}>
+
+      <Box display="flex" flex="1" overflow={'auto'} padding={5}>
+        <Form onSubmit={handleSubmit(handleSubmitRegister)}>
+          <Box display="flex" width={'100%'} flexDirection={'column'} bgcolor="white" padding={4} gap={1} borderRadius={1}>
+
             <Label color={errors?.name ? 'error' : 'primary'}>Nome</Label>
-            <TextField {...register('name')} error={!!errors?.name} />
+            <Field {...register('name')} error={!!errors?.name} />
             {!!errors?.name && <ErrorLabel color="error">{errors.name.message}</ErrorLabel>}
 
             <Label color={errors?.email ? 'error' : 'primary'}>E-mail</Label>
-            <TextField {...register('email')} error={!!errors?.email}></TextField>
+            <Field {...register('email')} error={!!errors?.email}></Field>
             {!!errors?.email && <ErrorLabel color="error">{errors.email.message}</ErrorLabel>}
 
             <Label color={errors?.birthDay ? 'error' : 'primary'}>Data de nascimento</Label>
@@ -59,21 +59,25 @@ export function SignIn() {
                   disableFuture
                   format="DD/MM/YYYY"
                   value={value ? dayjs(value) : null}
+                  slots={{
+                    textField: Field
+                  }}
+                  enableAccessibleFieldDOMStructure={false}
                 />
               )}
             />
             {!!errors?.birthDay && <ErrorLabel color="error">{errors.birthDay.message}</ErrorLabel>}
 
             <Label color={errors?.occupation ? 'error' : 'primary'}>Ocupação profissional</Label>
-            <TextField {...register('occupation')} error={!!errors?.occupation}></TextField>
-             {!!errors?.occupation && <ErrorLabel color="error">{errors.occupation.message}</ErrorLabel>}
+            <Field {...register('occupation')} error={!!errors?.occupation}></Field>
+              {!!errors?.occupation && <ErrorLabel color="error">{errors.occupation.message}</ErrorLabel>}
 
             <Label color={errors?.password ? 'error' : 'primary'}>Senha</Label>
-            <TextField {...register('password')} error={!!errors?.password}></TextField>
+            <Field {...register('password')} error={!!errors?.password}></Field>
             {!!errors?.password && <ErrorLabel color="error">{errors.password.message}</ErrorLabel>}
 
             <Label color={errors?.confirmPassword ? 'error' : 'primary'}>Confirmar senha</Label>
-            <TextField {...register('confirmPassword')} error={!!errors?.confirmPassword}></TextField>
+            <Field {...register('confirmPassword')} error={!!errors?.confirmPassword}></Field>
             {!!errors?.confirmPassword && <ErrorLabel color="error">{errors.confirmPassword.message}</ErrorLabel>}
 
             <Box display="flex" width={'100%'} justifyContent={'space-between'} mt={2}>
@@ -81,7 +85,7 @@ export function SignIn() {
               <ButtonComponent variant="contained" type="submit">Cadastrar</ButtonComponent>
             </Box>
           </Box>
-        </form>
+        </Form>
       </Box>
     </Box>
   )

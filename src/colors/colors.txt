@@ -11,3 +11,9 @@ Aqui estão as principais cores hexadecimais extraídas da imagem:
 #99c5b5 (verde claro acinzentado)
 
 #d2e8dc (verde muito claro)
+
+Tipo	Hex	Descrição
+Coral vibrante	#ff6b6b	Acento para alertas/destaques
+Laranja suave	#f4a261	Destaques neutros/quentes
+Dourado claro	#e0c872	Refinado, ótimo para ícones
+Azul claro	#73c2fb	Moderno, para CTAs
